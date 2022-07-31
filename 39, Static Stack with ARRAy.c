@@ -2,21 +2,28 @@
 
 int arr[10] ={0};
 
-int sizek();
 int push(int);
 int pop();
 int isFull();
+int isEmpty();
+int sizek();
 int count();
 int peak(int);
+int change(int ,int);
 void display();
 
 int main(){
-	
+	// Push
 	push(10);
 	push(20);
 	push(30);
 	push(40);
+	// Print
 	display();
+	// update
+	change(2,90);
+	display();
+	// Count
 	count();
 	pop();
 	pop();
@@ -26,10 +33,13 @@ int main(){
 	peak(3);
 	
 }
-
+// Return size of array
 int sizek(){
 	return sizeof(arr)/sizeof(arr[0]);
 }
+
+// Return the status of array
+
 int isFull(){
 	int size = sizek();
 	if(arr[size-1] !=0){
@@ -44,6 +54,8 @@ int isEmpty(){
 	return 0;
 }
 
+
+// Appending the element
 int push(int a){
 	if(isFull()){
 		printf("\nArray Overflow\n");
@@ -60,6 +72,7 @@ int push(int a){
 	
 }
 
+//Removing the element
 int pop(){
 	if(isEmpty()){
 		printf("\nArray UnderFlow\n");
@@ -77,6 +90,8 @@ int pop(){
 	return t;
 }
 
+
+// Counting the number if elements
 int count(){
 	if(isEmpty()){
 		printf("\nArray UnderFlow\n");
@@ -92,10 +107,11 @@ int count(){
 			break;
 		}
 	}
-	printf("Count is -->%d\n\n",sum);
+	printf("Count is -->%d\n",sum);
 	return sum;
 }
 
+// Element at given location
 int peak(int pos){
 	if(isEmpty()){
 		printf("\nArray UnderFlow\n");
@@ -110,6 +126,16 @@ int peak(int pos){
 }
 
 
+// Updating the given postion
+int change(int pos,int item){
+	if(isEmpty()){
+		printf("\nArray UnderFlow\n");
+		return 0;
+	}
+	arr[pos-1]=item;
+}
+
+// Printing the array
 void display(){
 	int size = sizek();
 	int i;
