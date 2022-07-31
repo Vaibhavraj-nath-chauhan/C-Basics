@@ -7,6 +7,7 @@ int push(int);
 int pop();
 int isFull();
 int count();
+int peak(int);
 void display();
 
 int main(){
@@ -22,6 +23,7 @@ int main(){
 	display();
 	count();
 	display();
+	peak(3);
 	
 }
 
@@ -92,6 +94,19 @@ int count(){
 	}
 	printf("Count is -->%d\n\n",sum);
 	return sum;
+}
+
+int peak(int pos){
+	if(isEmpty()){
+		printf("\nArray UnderFlow\n");
+		return 0;
+	}
+	pos = arr[pos-1];
+	if(pos ==0){
+		printf("\nNo data\n");
+	}
+	else printf("\n%d\n",pos);
+	return pos;
 }
 
 
