@@ -1,17 +1,86 @@
 #include<stdio.h>
+
+int arr[10] ={0};
+
+int sizek();
+int push(int);
+int pop();
+int isFull();
+int count();
+void display();
+
 int main(){
-	int a;
 	
-	do{
-		printf("Enter Size of array--> ");
-		scanf("%d",&a);	
-		if(a<1){
-			printf("\n----Enter number more than 0----\n");
-		}
-	}while(a<1);
-	printf("\nSize of array -->%d\n",a);
-	int arr[a];
-	
-	
+	push(10);
+	push(20);
+	push(30);
+	push(40);
+	pop();
+	pop();
+	display();
 	
 }
+
+int sizek(){
+	return sizeof(arr)/sizeof(arr[0]);
+}
+int isFull(){
+	int size = sizek();
+	if(arr[size-1] !=0){
+		return 1;
+	}
+	return 0;
+}
+int isEmpty(){
+	if(arr[0]==0){
+		return 1;
+	}
+	return 0;
+}
+
+int push(int a){
+	if(isFull()){
+		printf("\nArray Overflow\n");
+		return 0;
+	}
+	int size = sizek();
+	int i;
+	for(i=0;i<size;i++){
+		if(arr[i]==0){
+			arr[i]=a;
+			break;
+		}
+	}
+	
+}
+
+int pop(){
+	if(isEmpty()){
+		printf("\nArray UnderFlow\n");
+		return 0;
+	}
+	int size = sizek();
+	int i;
+	for(i=0;i<size;i++){
+		if(arr[i]==0){
+			break;
+		}
+	}
+	int t = arr[i-1];
+	arr[i-1]=0;
+	return t;
+}
+
+
+void display(){
+	int size = sizek();
+	int i;
+	for(i=0;i<size;i++){
+		if(arr[i]==0) break;
+		printf("%d ",arr[i]);
+	}
+	printf("\n");
+	
+}
+
+
