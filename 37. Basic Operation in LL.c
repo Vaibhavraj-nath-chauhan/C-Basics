@@ -48,6 +48,23 @@ struct node* insterat(struct node *headRef,int data,int loc){
 	return headRef;
 }
 
+struct node *del(struct node *head,int data){
+	struct node *temp = (struct node*)malloc(sizeof(struct node));
+	struct node *trav = head;
+	while(trav->next !=NULL){
+		if(trav->next->data==data){
+			temp = trav->next;
+
+			break;
+		}
+		trav = trav->next;
+	}
+	trav->next = temp->next;
+	temp->next = NULL;
+	free(temp);
+	return head;
+}
+
 
 
 void travel(struct node *t){
@@ -58,16 +75,18 @@ void travel(struct node *t){
 }
 
 
-
-
-
 int main(){
 
 	struct node *head = NULL;
 	head = push(head,40);
-	head = push(head,20);
+	head = push(head,4);
+	head = push(head,41);
+	head = push(head,42);
+	head = push(head,43);
+	head = push(head,24);
 	head = append(head,60);
-	head = insterat(head,30,3);
+	head = insterat(head,30,2);
+	head = del(head,60);
 	travel(head);
 
 }
